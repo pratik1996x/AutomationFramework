@@ -22,7 +22,7 @@ import com.qa.automation.TestBase.TestBase;
 
 public class Utilities extends TestBase{
 
-	public String takeScreenshot(String name) {
+	public static String takeScreenshot(String name) {
 		String path=System.getProperty("user.dir")+"/screenshots/"+name+System.currentTimeMillis()+".png";
 		
 		File src=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
@@ -35,13 +35,13 @@ public class Utilities extends TestBase{
 		return path;
 	}
 	
-	public WebElement explicitWait(WebElement element,int durationInSeconds) {
+	public static WebElement explicitWait(WebElement element,int durationInSeconds) {
 		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(durationInSeconds));
 		WebElement we = wait.until(ExpectedConditions.visibilityOf(element));
 		return we;
 	}
 	
-	public WebElement fluentWait(WebElement element) {
+	public static WebElement fluentWait(WebElement element) {
 		final WebElement el = element;
 		Wait<WebDriver> wait=new FluentWait<WebDriver>(driver)
 				.withTimeout(Duration.ofSeconds(0))
